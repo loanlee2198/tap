@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  h1{
+    text-align: center;
+	color : RED;
+	text-transform: uppercase;
+    font-style: italic;
+   
+    }
+
+.dropbtn {
+margin: 10px;
+width: 90%;
+  border-width: 5px;
+  border : 2px solid;
+	padding:5px;
+  color: maroon;
+	background: rgb(36, 230, 53);
+	text-align: center;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 20px;
+
+      
+}
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  border-radius: 20px;
+  width: 100%;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: red ;
+  padding: 12px 16px;
+  display: block;
+}
+
+.show {display: block;}
+body{
+    background:lightcoral;
+}
+</style>
+</head>
+<body >
+<ul>
+<div>
+    <button id="myDropdown" class="dropbtn"class="dropdown-content"><a href="trangchu.html" target="noidung">Trang chủ </a></button>
+  
+</div>
+    <div class="dropdown" >
+        <button onclick="Function1()" class="dropbtn">Xem thông tin</button>
+        <div id="Function1" class="dropdown-content">
+          <a href="xemthongtinNV.php" target="noidung">Xem thông tin nhân viên</a>
+          <a href="xemthongtinPB.php" target="noidung">Xem thông tin phòng ban</a>
+        </div>
+    </div>
+    <div>
+        <button id="myDropdown" class="dropbtn"class="dropdown-content"><a href="timkiem.php" target="noidung">Tìm kiếm </a></button>
+    </div>
+<div>
+    <button id="myDropdown" class="dropbtn"class="dropdown-content"><a href="login.php" target="noidung">Đăng nhập </a></button>  
+</div>
+</ul>
+
+<script>
+
+function Function1() {
+  document.getElementById("Function1").classList.toggle("show");
+}
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
+
+function Function2() {
+  document.getElementById("Function2").classList.toggle("show");
+}
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+
+
+</body>
+</html>
