@@ -1,0 +1,103 @@
+CR LF (Windows), LF (Unix) and CR (Macintosh)
+https://stackoverflow.com/questions/1552749/difference-between-cr-lf-lf-and-cr-line-break-types
+https://en.wikipedia.org/wiki/Newline
+https://dev.mysql.com/downloads/installer/
+
+References:
++ STR_TO_DATE: https://www.w3schools.com/sql/func_mysql_str_to_date.asp
+               SELECT STR_TO_DATE('2017,8,14 10,40,10', '%Y,%m,%d %h,%i,%s');
+
++ DATE_FORMAT: https://www.w3schools.com/sql/func_mysql_date_format.asp
+               SELECT DATE_FORMAT('2017-06-15', '%m %d %Y');               
+
++ ROUNDING:    SELECT ROUND(13.5678, 2)
+
++ GROUP_CONCAT: http://www.mysqltutorial.org/mysql-group_concat/
+                https://dev.mysql.com/doc/refman/8.0/en/group-by-functions.html#function_group-concat
+                SELECT MaLoai, group_concat(DISTINCT TenMH ORDER BY TenMH DESC separator ' - ')
+                FROM MatHang WHERE MaLoai = 1;
+
+
+A. INSERT
+r Sử dụng bảng dữ liệu mẫu. Thực hiện thêm dữ liệu vào cơ sở dữ liệu cho table
++ Mathang
++ LoaiHang
++ Sử dụng refresh-insertt-data.sql để refresh data
+
+======================= REFRESH DATA =======================
+
+B. DELETE
+r1. Xóa nhân viên có tên 'Văn Hoàng' trong hệ thống
+2. Xóa bộ phận giao hàng trong hệ thống
+   . NO ACTION
+   . CASCADE
+r3. Xóa tất cả các mặt hàng có mã loại bằng 4
+chưa 4. Xóa tất cả các mặt hàng trong hệ thống
+5. Vì hệ thống bị lỗi. Hủy tất cả các đơn hàng ngày 23/11/2019
+
+======================= REFRESH DATA =======================
+
+C. UPDATE
+r1. Cập nhật tên mới cho phòng ban có MaPB = 2 thành 'Bộ phận quản lý'
+ko cần 2. Cập nhật ghi chú của đơn hàng 01 thành 'Giao hàng sau 10H sáng'
+r 3. Đơn hàng 01 đã được giao hàng thành công. Thực hiện cập nhật 
+   MaTT = 03, TrangThai = 'Đã giao', ThoiGian = Thời gian hiện tại
+r4. Cập nhật tổng tiền trong bảng hóa đơn thành 890 cho đơn hàng 01
+r5. Cập nhật tất cả các mặt hàng thuộc loại hàng là 'Mũ' với giá bán là 199K
+
+======================= REFRESH DATA =======================
+D. SELECT - SLIDE 25-44
+r1. Toàn bộ thông tin các loại hàng
+    -- Mặt hàng thuộc loại hàng là 'Thắt lưng'
+    -- Top 5 mặt hàng có giá bán cao nhất
+2. Đơn hàng
+	r-- Được bán trong ngày 28/11/2019
+     r -- Được bán từ ngày 28/11/2019 đến ngày 02/12/2019
+    r -- Được bán trong tháng 11/2019
+    r-- Được giao hàng tại Hòa Khánh
+r 3. Giá của toàn bộ các mặt hàng sau khi được khuyến mãi 20%, làm tròn 2 chữ số thập phân
+4. Giảm giá 20% tất cả các mặt hàng trong ngày 25/11/2019
+r5. Liệt kê tất cả các màu sắc của sản phẩm có bán trong cửa hàng.
+7. Liệt kê tất cả các mặt hàng (MaMH, TenMH, ThoiGianDatHang) được bán trong ngày 23/11/2019
+r 8. Liệt kê các mặt hàng có giá bán từ 100 - 300
+ko 9. Liệt kê tất cả các mặt hàng thuộc loại hàng là 'Mũ' và 'Thắt lưng'
+r 10. Liệt kê các đơn hàng được đặt trong ngày (28/11/2019, 14/12/2019)
+r11. Sắp xếp các mặt hàng với giá bán tăng dần
+r12. Sắp xếp các mặt hàng với giá mua giảm dần
+r13. Sắp xếp các mặt hàng với giá bán tăng dần, giá mua giảm dần
+r14. Đếm số lượng các mặt hàng trong hệ thống
+15. Số lượng 'Giày da Nam' được bán trong ngày 23/11/2019
+
+D1. SELECT GROUP BY - HAVING: SLIDE 45-53
+1. Đếm số lượng các mặt hàng theo từng loại hàng
+2. Tìm giá bán cao nhất của các mặt hàng trong loại hàng 'Mũ'
+3. Tìm giá bán cao nhất của mỗi loại hàng
+4. Hiển thị tổng số lượng mặt hàng của mỗi loại hàng trong hệ thống
+5. Hiển thị tổng số lượng mặt hàng của mỗi loại hàng trong hệ thống
+    Điều kiện tổng số lượng > 20 mặt hàng
+6. Hiển thị mặt hàng có số lượng nhiều nhất trong mỗi loại hàng
+7. Hiển thị giá bán trung bình của mỗi loại hàng
+8. In ra 3 loại hàng có số lượng hàng còn lại nhiều nhất ở thời điểm hiện tại
+
+
+D2. SELECT UNION - INTERSECT: SLIDE 54 - 56
+1. Liệt kê những mặt hàng có MaLoai = 2 và những mặt hàng thuộc đơn hàng 100100
+
+D3. SELECT - JOIN: SLIDE 57
+-- DEMO NhanVien va PhongBan
+
+D4. SELECT SUB - QUERY : SLIDE - 64
+1. Liệt kê những 'mặt hàng' có MaLoai = 2 và thuộc đơn hàng 100100
+2. Tìm những mặt hàng có Mã Loại = 2 và đã được bán trong ngày 28/11
+3. Liệt kê những mặt hàng là 'Mũ' không bán được trong ngày 14/02/2019
+4. Cập nhật giá bán của tất cả các mặt hàng thuộc loại hàng 'Áo' thành 199
+5. Tạo table LoaiHang_BACKUP(MaLoai, TenLoai)
+   Sao chép dữ liệu từ bảng LoaiHang sang LoaiHang_BACKUP   
+6. Tìm những mặt hàng có Mã Loại = 2 (T-Shirt) và đã được bán trong ngày 23/11
+7. Liệt kê 2 sản phẩm (có số lượng tồn kho nhiều nhất) của mỗi loại hàng là 'Áo' và 'Quần'
+8. Tạo hóa đơn cho đơn hàng 02
+    Với tổng tiền được tính bằng tổng các sản phẩm và số lượng của sản phẩm tương ứng
+
+Tính tổng tiền của đơn hàng 02
+SoDH ChiTietDonHang           TongTien
+02   TenMH:GiaBan:SoLuong -     
